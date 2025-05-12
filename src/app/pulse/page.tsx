@@ -318,7 +318,7 @@ export default function PulseCommunity() {
                 Pulse Community Campaign
               </h1>
               <p className="text-xl mb-8 text-gray-300 leading-relaxed backdrop-blur-sm bg-black/10 p-6 rounded-xl border border-gray-800/50">
-                Join our community bootstrapper campaign for Pulse and earn rewards by posting quality content. The clock is ticking!
+                Join our community amplifying campaign for Pulse and earn rewards by posting content. The clock is ticking!
               </p>
               
               {/* 타이머 디스플레이 - 글래스모피즘 적용 */}
@@ -386,7 +386,7 @@ export default function PulseCommunity() {
                   <div className="flex justify-around items-center border-t border-b border-slate-300/10 py-4 mb-6 text-center">
                     <div>
                       <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">{community?.bountyAmount ? parseFloat(community.bountyAmount).toFixed(2) : '100.00'}</div>
-                      <div className="text-xs text-gray-400 uppercase tracking-wider">PULSE Tokens</div>
+                      <div className="text-xs text-gray-400 uppercase tracking-wider">Reward SOL</div>
                     </div>
                     <div className="border-l border-slate-300/10 h-10"></div>
                     <div>
@@ -395,15 +395,7 @@ export default function PulseCommunity() {
                     </div>
                   </div>
 
-                  <a 
-                    href="https://pulse.community"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white text-center rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] relative overflow-hidden group"
-                  >
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span className="relative z-10">Learn More About Pulse</span>
-                  </a>
+            
                 </div>
               </div>
             </div>
@@ -567,65 +559,9 @@ export default function PulseCommunity() {
         </div>
         
         <div className="max-w-6xl mx-auto px-4 relative z-10">
-          <div className="mb-14 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text inline-block">
-              Campaign Rewards
-            </h2>
-            <div className="h-1 w-40 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-          </div>
+
           
-          {/* 리워드 그리드 - 글래스모피즘 적용 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* 우승자 리워드 박스 */}
-            <div className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/30 p-8 rounded-xl shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 group">
-              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text">Winner Rewards</h3>
-              <ul className="space-y-4">
-                <li className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.7)] transition-all duration-300">
-                    <span className="text-white text-sm">✦</span>
-                  </div>
-                  <div>
-                    <span className="text-lg font-medium bg-gradient-to-r from-blue-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300">X PULSE Tokens</span> 
-                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Reward description</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.7)] transition-all duration-300">
-                    <span className="text-white text-sm">✦</span>
-                  </div>
-                  <div>
-                    <span className="text-lg font-medium bg-gradient-to-r from-blue-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300">Exclusive NFT Badge</span>
-                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Unique digital collectible</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            
-            {/* 활발한 참가자 리워드 박스 */}
-            <div className="backdrop-blur-md bg-gradient-to-br from-purple-900/20 to-indigo-900/20 border border-purple-500/30 p-8 rounded-xl shadow-[0_0_25px_rgba(139,92,246,0.2)] hover:shadow-[0_0_35px_rgba(139,92,246,0.3)] transition-all duration-500 group">
-              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">Active Participant Rewards</h3>
-              <ul className="space-y-4">
-                <li className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300">
-                    <span className="text-white text-sm">✦</span>
-                  </div>
-                  <div>
-                    <span className="text-lg font-medium bg-gradient-to-r from-purple-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:to-indigo-200 transition-all duration-300">Y PULSE Tokens per quality post</span>
-                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Earn for contributing</p>
-                  </div>
-                </li>
-                <li className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300">
-                    <span className="text-white text-sm">✦</span>
-                  </div>
-                  <div>
-                    <span className="text-lg font-medium bg-gradient-to-r from-purple-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:to-indigo-200 transition-all duration-300">Community Badges</span>
-                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Based on contribution</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+     
           
           <div className="mt-16 text-center">
             <p className="text-xl mb-8 text-indigo-300 backdrop-blur-sm bg-indigo-900/10 p-4 rounded-lg inline-block">Don't miss your chance to participate in the Pulse campaign!</p> 
