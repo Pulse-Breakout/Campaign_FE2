@@ -10,7 +10,7 @@ import { TimerAPI, TimerState } from '@/api/timer';
 import { CloudinaryAPI } from '@/api/cloudinary';
 import { CommunityAPI, Community } from '@/api/community';
 import { CONFIG } from '@/api/config';
-import { toast } from 'sonner';
+import { toast } from 'react-toastify';
 
 // Define Pulse community ID constant - REMEMBER TO REPLACE THIS
 const PULSE_COMMUNITY_ID = "f47ac10b-58cc-4372-a567-0e02b2c3d479"; 
@@ -222,28 +222,37 @@ export default function PulseCommunity() {
       // Scroll to the timer
       timerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       
-      // Display success toast with action button
+      // Display success toast using react-toastify
       const twitterBaseUrl = "https://x.com/intent/tweet?in_reply_to=1916179301688602947&text=";
-      const encodedText = encodeURIComponent(content); // Use the submitted content state
-      toast.success('Content submitted successfully!', {
-        duration: 8000, // Increased duration to 8 seconds
-        action: {
-          label: "Post on X!",
-          onClick: () => window.open(twitterBaseUrl + encodedText, '_blank'),
-        },
-        // Add custom styling for the action button
-        actionButtonStyle: {
-          backgroundColor: '#2563eb', // A prominent blue color
-          color: 'white',
-          padding: '8px 16px', // Larger padding
-          borderRadius: '6px', // Rounded corners
-          fontSize: '16px', // Larger font size
-        }
-      });
+      const encodedText = encodeURIComponent(content); 
+
+      const PostOnXButton = () => (
+        <button 
+          onClick={() => window.open(twitterBaseUrl + encodedText, '_blank')}
+          // Changed background to indigo/purple gradient
+          className="mt-3 w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500 transition-all duration-150 ease-in-out shadow-md hover:shadow-lg"
+        >
+          Post on X!
+        </button>
+      );
+
+      toast.success(
+        <div className="flex flex-col items-center text-center p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="font-semibold text-lg mb-1">Content Submitted!</p> 
+          <p className="text-xs text-yellow-400 mb-2 px-2">Important: X Post is mandatory to be eligible for rewards.</p> 
+          <PostOnXButton />
+        </div>,
+        {
+          icon: false
+        } 
+      );
 
     } catch (error) {
       console.error('Error submitting content:', error);
-      // Also use toast for errors
+      // Use react-toastify for errors
       toast.error('Failed to submit content. Please try again.'); 
     } finally {
       setSubmitting(false);
@@ -256,7 +265,9 @@ export default function PulseCommunity() {
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white overflow-hidden">
+
       {/* 배경 효과 */}
+
       <div className="fixed inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/pulsebg.jpg')] opacity-20 bg-fixed"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black via-indigo-950/30 to-black"></div>
@@ -386,7 +397,11 @@ export default function PulseCommunity() {
                   <div className="flex justify-around items-center border-t border-b border-slate-300/10 py-4 mb-6 text-center">
                     <div>
                       <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">{community?.bountyAmount ? parseFloat(community.bountyAmount).toFixed(2) : '100.00'}</div>
+<<<<<<< HEAD
                       <div className="text-xs text-gray-400 uppercase tracking-wider">Reward SOL</div>
+=======
+                      <div className="text-xs text-gray-400 uppercase tracking-wider">SOL</div>
+>>>>>>> main
                     </div>
                     <div className="border-l border-slate-300/10 h-10"></div>
                     <div>
@@ -473,6 +488,13 @@ export default function PulseCommunity() {
               <span className="relative z-10">{submitting ? 'Submitting...' : (walletConnected ? 'Submit Post' : 'Connect Wallet to Post')}</span>
             </button>
             {!walletConnected && <p className="text-center text-purple-400 mt-2 text-sm">You must connect your wallet to post.</p>}
+            {/* Warning about X post requirement */}
+            <p className="mt-3 text-center text-yellow-500 text-sm font-medium flex items-center justify-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                <path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" clipRule="evenodd" />
+              </svg>
+              Important: Post on X after submission to be eligible for rewards.
+            </p>
           </form>
           
           {/* 포스트 피드 - 글래스모피즘 적용 */}
@@ -561,7 +583,62 @@ export default function PulseCommunity() {
         <div className="max-w-6xl mx-auto px-4 relative z-10">
 
           
+<<<<<<< HEAD
      
+=======
+          {/* 리워드 그리드 - 글래스모피즘 적용 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* 우승자 리워드 박스 */}
+            <div className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/30 p-8 rounded-xl shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 group">
+              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 text-transparent bg-clip-text">Winner Rewards</h3>
+              <ul className="space-y-4">
+                <li className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.7)] transition-all duration-300">
+                    <span className="text-white text-sm">✦</span>
+                  </div>
+                  <div>
+                    <span className="text-lg font-medium bg-gradient-to-r from-blue-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300">X SOL</span> 
+                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Reward description</p>
+                  </div>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_15px_rgba(59,130,246,0.7)] transition-all duration-300">
+                    <span className="text-white text-sm">✦</span>
+                  </div>
+                  <div>
+                    <span className="text-lg font-medium bg-gradient-to-r from-blue-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-blue-200 group-hover:to-indigo-200 transition-all duration-300">Exclusive NFT Badge</span>
+                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Unique digital collectible</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            {/* 활발한 참가자 리워드 박스 */}
+            <div className="backdrop-blur-md bg-gradient-to-br from-purple-900/20 to-indigo-900/20 border border-purple-500/30 p-8 rounded-xl shadow-[0_0_25px_rgba(139,92,246,0.2)] hover:shadow-[0_0_35px_rgba(139,92,246,0.3)] transition-all duration-500 group">
+              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">Active Participant Rewards</h3>
+              <ul className="space-y-4">
+                <li className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300">
+                    <span className="text-white text-sm">✦</span>
+                  </div>
+                  <div>
+                    <span className="text-lg font-medium bg-gradient-to-r from-purple-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:to-indigo-200 transition-all duration-300">Y SOL per quality post</span>
+                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Earn for contributing</p>
+                  </div>
+                </li>
+                <li className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center mr-4 shadow-[0_0_10px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_15px_rgba(139,92,246,0.7)] transition-all duration-300">
+                    <span className="text-white text-sm">✦</span>
+                  </div>
+                  <div>
+                    <span className="text-lg font-medium bg-gradient-to-r from-purple-300 to-indigo-300 text-transparent bg-clip-text group-hover:from-purple-200 group-hover:to-indigo-200 transition-all duration-300">Community Badges</span>
+                    <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">Based on contribution</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+>>>>>>> main
           
           <div className="mt-16 text-center">
             <p className="text-xl mb-8 text-indigo-300 backdrop-blur-sm bg-indigo-900/10 p-4 rounded-lg inline-block">Don't miss your chance to participate in the Pulse campaign!</p> 
